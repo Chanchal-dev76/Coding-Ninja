@@ -1,8 +1,12 @@
 # Dependencies
 node_modules/
+node_modules
+**/node_modules/**
 
 # Production build
 dist/
+dist
+**/dist/**
 
 # Environment files
 .env
