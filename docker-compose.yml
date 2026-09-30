@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  # Main Application (Express API + Temporal Worker)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hotel-orchestrator-app
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - TEMPORAL_ADDRESS=temporal:7233
+      - TEMPORAL_NAMESPACE=default
+      - TEMPORAL_TASK_QUEUE=HOTEL_OFFER_TASK_QUEUE
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_TTL_SECONDS=3600
+      - SUPPLIER_A_URL=http://localhost:3000/supplierA/hotels
+      - SUPPLIER_B_URL=http://localhost:3000/supplierB/hotels
+    depends_on:
+      - redis
+      - temporal
+    restart: unless-stopped
+
+  # Redis Cache & Sorted Set Store
+  redis:
+    image: redis:7-alpine
+    container_name: hotel-orchestrator-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # Temporal Orchestration Server (SQLite backend for lightweight local orchestration)
+  temporal:
+    image: temporalio/auto-setup:1.24.2
+    container_name: hotel-orchestrator-temporal
+    ports:
+      - "7233:7233"
+    environment:
+      - DB=sqlite
+      - DYNAMIC_CONFIG_FILE_PATH=config/dynamicconfig/development-sqlite.yaml
+    restart: unless-stopped
+
+  # Temporal Web UI
+  temporal-ui:
+    image: temporalio/ui:2.26.0
+    container_name: hotel-orchestrator-temporal-ui
+    ports:
+      - "8080:8080"
+    environment:
+      - TEMPORAL_ADDRESS=temporal:7233
+      - TEMPORAL_CORS_ORIGINS=http://localhost:8080
+    depends_on:
+      - temporal
+    restart: unless-stopped

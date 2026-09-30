@@ -1,0 +1,133 @@
+import { SupplierOffer } from '../types/hotel';
+
+export const supplierAHotels: SupplierOffer[] = [
+  {
+    hotelId: 'a1',
+    name: 'Holtin',
+    price: 6000,
+    city: 'delhi',
+    commissionPct: 10,
+  },
+  {
+    hotelId: 'a2',
+    name: 'Radison',
+    price: 5900,
+    city: 'delhi',
+    commissionPct: 13,
+  },
+  {
+    hotelId: 'a3',
+    name: 'Hyatt Regency',
+    price: 7800,
+    city: 'delhi',
+    commissionPct: 15,
+  },
+  {
+    hotelId: 'a4',
+    name: 'Taj Palace',
+    price: 9500,
+    city: 'delhi',
+    commissionPct: 12,
+  },
+  {
+    hotelId: 'a5',
+    name: 'The Oberoi',
+    price: 12000,
+    city: 'delhi',
+    commissionPct: 15,
+  },
+  {
+    hotelId: 'a6',
+    name: 'ITC Maurya',
+    price: 8900,
+    city: 'delhi',
+    commissionPct: 14,
+  },
+  {
+    hotelId: 'a7',
+    name: 'Trident Nariman Point',
+    price: 8500,
+    city: 'mumbai',
+    commissionPct: 12,
+  },
+  {
+    hotelId: 'a8',
+    name: 'Taj Mahal Tower',
+    price: 14000,
+    city: 'mumbai',
+    commissionPct: 15,
+  },
+  {
+    hotelId: 'a9',
+    name: 'Novotel Juhu',
+    price: 6500,
+    city: 'mumbai',
+    commissionPct: 10,
+  },
+];
+
+export const supplierBHotels: SupplierOffer[] = [
+  {
+    hotelId: 'b1',
+    name: 'Holtin',
+    price: 5340,
+    city: 'delhi',
+    commissionPct: 20,
+  },
+  {
+    hotelId: 'b2',
+    name: 'Radison',
+    price: 6200,
+    city: 'delhi',
+    commissionPct: 11,
+  },
+  {
+    hotelId: 'b3',
+    name: 'Hyatt Regency',
+    price: 7400,
+    city: 'delhi',
+    commissionPct: 14,
+  },
+  {
+    hotelId: 'b4',
+    name: 'Marriott Aerocity',
+    price: 7200,
+    city: 'delhi',
+    commissionPct: 16,
+  },
+  {
+    hotelId: 'b5',
+    name: 'The Oberoi',
+    price: 12500,
+    city: 'delhi',
+    commissionPct: 10,
+  },
+  {
+    hotelId: 'b6',
+    name: 'Leela Palace',
+    price: 10500,
+    city: 'delhi',
+    commissionPct: 17,
+  },
+  {
+    hotelId: 'b7',
+    name: 'Trident Nariman Point',
+    price: 8200,
+    city: 'mumbai',
+    commissionPct: 14,
+  },
+  {
+    hotelId: 'b8',
+    name: 'Taj Mahal Tower',
+    price: 14500,
+    city: 'mumbai',
+    commissionPct: 12,
+  },
+  {
+    hotelId: 'b9',
+    name: 'JW Marriott Juhu',
+    price: 11000,
+    city: 'mumbai',
+    commissionPct: 16,
+  },
+];

@@ -1,0 +1,9 @@
+node_modules
+dist
+.git
+.gitignore
+*.log
+.env
+tests
+coverage
+Hotel_Offer_Orchestrator.postman_collection.json
