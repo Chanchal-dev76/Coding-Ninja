@@ -5,6 +5,8 @@ import { hotelRouter } from './routes/hotels';
 import { healthRouter } from './routes/health';
 import { logger } from './logger';
 
+import { landingRouter } from './routes/landing';
+
 export function createApp() {
   const app = express();
 
@@ -17,6 +19,9 @@ export function createApp() {
     logger.info({ method: req.method, url: req.url }, 'Incoming HTTP Request');
     next();
   });
+
+  // Landing page dashboard
+  app.use(landingRouter);
 
   // Supplier routes (Mock Supplier APIs)
   app.use(supplierRouter);

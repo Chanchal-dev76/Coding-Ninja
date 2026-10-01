@@ -34,6 +34,14 @@ describe('Hotel Orchestrator API Endpoints', () => {
     vi.restoreAllMocks();
   });
 
+  it('GET / should return 200 and the HTML landing page', async () => {
+    const res = await request(app).get('/');
+    expect(res.status).toBe(200);
+    expect(res.headers['content-type']).toContain('text/html');
+    expect(res.text).toContain('Hotel Offer Orchestrator');
+    expect(res.text).toContain('Temporal.io');
+  });
+
   it('GET /api/hotels without city should return 400 Bad Request', async () => {
     const res = await request(app).get('/api/hotels');
     expect(res.status).toBe(400);
